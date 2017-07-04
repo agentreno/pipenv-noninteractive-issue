@@ -68,7 +68,11 @@ Vagrant.configure("2") do |config|
      sudo apt-get update
      sudo apt-get install -y python-pip
      pip install pipenv
-     pipenv shell
-     python /vagrant/needs_requests.py
+     # To run shell commands in a non-interactive environment, use pipenv run
+     # instead of pipenv shell
+     # pipenv shell
+     # python /vagrant/needs_requests.py
+     cd /vagrant || exit 1
+     pipenv install && pipenv run python /vagrant/needs_requests.py
   SHELL
 end
